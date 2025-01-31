@@ -1,0 +1,7 @@
+.vscode/
+.serverless/
+node_modules/
+dist/
+.build/
+*.tgz
+.env

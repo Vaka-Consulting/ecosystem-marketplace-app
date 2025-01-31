@@ -1,0 +1,12 @@
+{
+    "preset": "ts-jest",
+    "rootDir": "./",
+    "resolver": "jest-ts-webcompat-resolver",
+    "testPathIgnorePatterns": [
+        "<rootDir>/node_modules"
+    ],
+    "testMatch": [
+        "**/*.test.ts"
+    ],
+    "verbose": true
+}

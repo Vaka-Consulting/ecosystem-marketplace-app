@@ -1,0 +1,16 @@
+{
+  "name": "@empowa-tech/marketplace-contract",
+  "version": "1.0.0",
+  "description": "SDK to interact with the Plu-TS Marketplace Contract",
+  "author": "Senny Kalidien <senny@vaka.consulting>",
+  "license": "UNLICENSED",
+  "repository": "https://github.com/vaka-consultancy/vaka-js",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@meshsdk/core": "^1.7.6",
+    "@empowa-tech/common": "^1.0.0"
+  }
+}

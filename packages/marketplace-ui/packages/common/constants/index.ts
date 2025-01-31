@@ -1,0 +1,1 @@
+export const LOVELACE_AMOUNT = 1000000

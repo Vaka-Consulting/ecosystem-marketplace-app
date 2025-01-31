@@ -1,0 +1,52 @@
+service: marketplace-api
+
+custom:
+  org: marketplace
+  queue_name: marketplace-blockfrost-request-${sls:stage}
+  
+provider:
+  name: aws
+  timeout: 60
+  runtime: nodejs18.x
+  httpApi:
+    cors: true
+  environment:
+    DB_NAME: marketplace_db
+    BLOCK_CONFIRMATION: 1
+    DB_SERVER_NAME: ${ssm:/${self:custom.org}/${sls:stage}/DB_SERVER_NAME}
+    NETWORK: preprod
+
+  iam:
+    role:
+      path: /
+      statements:
+        - Effect: Allow
+          Action:
+            - sqs:SendMessage
+          Resource: 
+            - arn:aws:sqs:${aws:region}:${aws:accountId}:${self:custom.queue_name}
+        - Effect: Allow
+          Action:
+            - ssm:GetParameter
+            - ssm:GetParameters
+          Resource: 
+            - "arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/${self:custom.org}/${sls:stage}/*"
+          
+functions:
+
+  graphql:
+    # Make sure your file path is correct!
+    # (e.g., if your file is in the root folder use server.graphqlHandler )
+    # The format is: <FILENAME>.<HANDLER>
+    handler: src/lambda.graphqlHandler # highlight-line
+    timeout: 30
+    events:
+      - httpApi:
+          path: /
+          method: POST
+      - httpApi:
+          path: /
+          method: GET
+ 
+plugins:
+  - serverless-plugin-typescript # Omit the following lines if you aren't using TS!

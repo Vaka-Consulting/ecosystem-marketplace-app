@@ -1,0 +1,19 @@
+{
+    "preset": "ts-jest",
+    "rootDir": "./",
+    "testPathIgnorePatterns": [
+        "<rootDir>/node_modules"
+    ],
+    "testMatch": [
+        "**/*.spec.ts"
+    ],
+    "verbose": true,
+    "transform": {
+        "^.+\\.tsx?$": [
+            "ts-jest",
+            {
+                "tsconfig": "tsconfig.json"
+            }
+        ]
+    }
+}

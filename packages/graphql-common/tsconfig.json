@@ -1,0 +1,24 @@
+{
+  // https://www.typescriptlang.org/tsconfig#compilerOptions
+  // "extends": "@tsconfig/strictest/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "lib": ["es2022","dom"],
+    "module": "ES2022",
+    "preserveConstEnums": true,
+    "moduleResolution": "Bundler",
+    "sourceMap": true,
+    "target": "es2022",
+    "outDir": "dist",
+    "experimentalDecorators": true,
+  },
+  
+  "include": ["src/**/*", "__tests__/aws.service.test.ts"],
+  // "files": ["src/@types/graphql.d.ts"],
+  "exclude": ["node_modules"],
+  
+}

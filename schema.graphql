@@ -1,0 +1,141 @@
+"""
+Ensures value is within boundaries. If used on lists, applies to every item.
+"""
+directive @range(
+  """
+  The maximum value (inclusive) to allow. If null, no upper limit is applied
+  """
+  max: Float = null
+
+  """
+  The minimum value (inclusive) to allow. If null, no lower limit is applied
+  """
+  min: Float = null
+
+  """How to handle validation errors"""
+  policy: RangeValidateDirectivePolicy = RESOLVER
+) on ARGUMENT_DEFINITION | FIELD_DEFINITION | INPUT_FIELD_DEFINITION | INPUT_OBJECT | OBJECT
+
+"""
+Indicates exactly one field must be supplied and this field must not be `null`.
+"""
+directive @oneOf on INPUT_OBJECT
+
+enum RangeValidateDirectivePolicy {
+  """
+  Field resolver is responsible to evaluate it using `validationErrors` injected in GraphQLResolverInfo
+  """
+  RESOLVER
+
+  """
+  Field resolver is not called if occurs a validation error, it throws `UserInputError`
+  """
+  THROW
+}
+
+"""GraphQLObjectId is a mongodb ObjectId. String of 12 or 24 hex chars"""
+scalar GraphQLObjectId
+
+"""DateTime is a MongoDB Datetime in ISO format"""
+scalar DateTime
+
+enum OperationType {
+  EQUALS
+  GREATER_THAN
+  GREATER_THAN_EQUALS
+  LESS_THAN
+  LESS_THAN_EQUALS
+  IN
+  REGEX_MATCH
+  SEARCH
+}
+
+enum SortType {
+  ASC
+  DESC
+}
+
+input WhereInput {
+  key: String
+  value: String
+  values: [String]
+  operator: OperationType!
+}
+
+input SortInput {
+  by: String
+  type: SortType
+}
+
+type PolicyAssetResponse {
+  results: [PolicyAsset]!
+  total: Int!
+}
+
+type PolicyAssetMetadataFile {
+  src: String
+  name: String
+  mediaType: String
+}
+
+type PolicyAssetOnChainMetadata {
+  name: String
+  files: [PolicyAssetMetadataFile]
+  image: String
+  mediaType: String
+  description: String
+  cardanoPhase: String
+  continent: String
+  privilegeLevel: String
+  empValue: String
+  characteristics: String
+}
+
+type PolicyAssetActivities {
+  policy_asset: PolicyAsset!
+  ada_transaction_hash: String
+  price: Float
+  status: String
+  ada_expiry: DateTime!
+  policy_id: String
+  type: String
+  asset_name: String
+  receiver_address: String
+}
+
+type PolicyAssetExtend {
+  _id: GraphQLObjectId!
+  seller_address: String
+  policy_asset: PolicyAsset!
+  is_sale: Boolean!
+  price: Float
+}
+
+type PolicyAsset {
+  _id: GraphQLObjectId!
+  mint_or_burn_count: Int
+  asset: String
+  policy_id: String
+  asset_name: String
+  fingerprint: String
+  quantity: String
+  onchain_metadata: PolicyAssetOnChainMetadata
+  extend: [PolicyAssetExtend!]
+  last_activity: PolicyAssetActivities
+}
+
+type Query {
+  policy_assets(page: Int = 0, limit: Int = 10, and: [WhereInput], sort: [SortInput] = [{by: "extend.price", type: DESC}, {by: "activities.ada_expiry", type: DESC}], or: [WhereInput]): PolicyAssetResponse
+  marketplace_config: MarketplaceAppConfig
+}
+
+type Mutation {
+  insert_activity(price: Float!, type: String!, receiver_address: String!, ada_transaction_hash: String!, policy_asset: GraphQLObjectId!): PolicyAssetActivities
+}
+
+type MarketplaceAppConfig {
+  protocol_owner_address: String!
+  script_address: String!
+  fee_oracle_address: String!
+  fee_oracle_asset: String!
+}

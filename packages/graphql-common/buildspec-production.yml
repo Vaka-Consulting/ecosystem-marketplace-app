@@ -1,0 +1,24 @@
+version: 0.2
+
+env:
+  exported-variables:
+    - DEPLOY_KEY
+
+phases:
+  install:
+    runtime-versions: 
+      nodejs: 18
+    commands:
+      - aws codeartifact login --tool npm --repository empowa_repo --domain empowa --domain-owner 831249657736 --region us-east-1
+      - npm i
+      - npm run build
+      - npm run test
+  build: 
+    commands:
+      - npm publish
+
+
+cache:
+  paths:
+    - "/root/.npm/**/*"
+    - 'node_modules/**/*' # Cache `node_modules` for faster `yarn` or `npm i`

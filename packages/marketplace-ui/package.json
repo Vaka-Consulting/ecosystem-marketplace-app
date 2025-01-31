@@ -1,0 +1,43 @@
+{
+  "name": "empowa-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Empowa Marketplace contains packages to help build applications that can interact with a Marketplace Smart Contract.",
+  "author": {
+    "name": "Senny Kalidien",
+    "email": "senny@sennify.com"
+  },
+  "homepage": "https://github.com/vaka-consulting/vaka-js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Vaka-Consulting/vaka-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Vaka-Consulting/vaka-js/issues"
+  },
+  "engines": {
+    "node": ">=18.18.x"
+  },
+  "workspaces": [
+    "applications/*",
+    "packages/*"
+  ],
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix"
+  },
+  "scripts": {
+    "dev": "yarn workspace marketplace-demo dev",
+    "prepare": "husky install",
+    "pre-commit": "yarn lint-staged",
+    "lint": "eslint --fix",
+    "clean": "npx rimraf --glob ./**/node_modules"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "lerna": "^8.1.8",
+    "lint-staged": "^13.0.1",
+    "prettier": "^3.3.3",
+    "eslint": "^9.11.1"
+  }
+}
