@@ -16,4 +16,4 @@ WORKDIR /app/applications/marketplace-demo
 EXPOSE 3000
 
 # # Start the application
-CMD ["yarn", "dev"]
+CMD ["bash", "-c", "yarn build  && yarn start"]
