@@ -61,6 +61,10 @@ services:
     depends_on: 
       api:
         condition: service_healthy
+    command:
+      - "bash"
+      - "-c"
+      - "yarn build  && yarn start"
     build:
       context: .
       dockerfile: docker/ui.Dockerfile

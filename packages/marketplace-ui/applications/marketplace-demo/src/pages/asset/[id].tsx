@@ -1,7 +1,7 @@
 import type {
-  GetStaticProps,
-  GetStaticPaths,
-  // GetServerSideProps,
+  // GetStaticProps,
+  // GetStaticPaths,
+  GetServerSideProps,
 } from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -17,9 +17,12 @@ import CardContent from '@mui/material/CardContent'
 import { ErrorBoundary } from 'react-error-boundary'
 import AuthWall from '@/components/AuthWall'
 import { IPFS_GATEWAY_URL } from '@/constants'
-import collectionsData from '@/data/collections.json'
+// import collectionsData from '@/data/collections.json'
 import { PolicyAsset } from '@/gql/graphql'
-import { POLICY_ASSETS_IDS_QUERY, SINGLE_POLICY_ASSET_QUERY } from '@/queries/policyAssets'
+import {
+  // POLICY_ASSETS_IDS_QUERY,
+  SINGLE_POLICY_ASSET_QUERY,
+} from '@/queries/policyAssets'
 import client from '@/services/apollo-client'
 
 const Marketplace = dynamic(() => import('@/components/Marketplace'), {
@@ -85,56 +88,34 @@ export default AssetPage
 /**
  * Static Site Generation
  */
-export const getStaticPaths = (async () => {
-  const policyIds = collectionsData.collections.map((collection) => collection.policyId)
+// export const getStaticPaths = (async () => {
+//   const policyIds = collectionsData.collections.map((collection) => collection.policyId)
+//
+//   const { data } = await client.query({
+//     context: { endpointIntent: 'build' },
+//     query: POLICY_ASSETS_IDS_QUERY,
+//     variables: {
+//       policyIds,
+//     },
+//   })
+//
+//   const ids = data?.policy_assets?.results
+//     .map((policyAsset) => policyAsset?.asset?.toString())
+//     .filter(Boolean) as string[]
+//
+//   const paths = ids.map((id) => ({ params: { id } }))
+//
+//   return {
+//     fallback: false,
+//     paths,
+//   }
+// }) satisfies GetStaticPaths
 
-  const { data } = await client.query({
-    query: POLICY_ASSETS_IDS_QUERY,
-    variables: {
-      policyIds,
-    },
-  })
-
-  const ids = data?.policy_assets?.results
-    .map((policyAsset) => policyAsset?.asset?.toString())
-    .filter(Boolean) as string[]
-
-  const paths = ids.map((id) => ({ params: { id } }))
-
-  return {
-    fallback: false,
-    paths,
-  }
-}) satisfies GetStaticPaths
-
-export const getStaticProps = (async (context) => {
-  const id = context?.params?.id as string
-
-  const { data } = await client.query({
-    query: SINGLE_POLICY_ASSET_QUERY,
-    variables: {
-      id,
-    },
-  })
-
-  const policyAsset = data?.policy_assets?.results[0]
-
-  return {
-    props: {
-      id,
-      ...policyAsset,
-    },
-  }
-}) satisfies GetStaticProps
-
-/**
- * Server Side Rendering
- * In case we want to re-render data on every request
- */
-// export const getServerSideProps = (async (context) => {
+// export const getStaticProps = (async (context) => {
 //   const id = context?.params?.id as string
 //
 //   const { data } = await client.query({
+//     context: { endpointIntent: 'fallback' },
 //     query: SINGLE_POLICY_ASSET_QUERY,
 //     variables: {
 //       id,
@@ -145,7 +126,32 @@ export const getStaticProps = (async (context) => {
 //
 //   return {
 //     props: {
+//       id,
 //       ...policyAsset,
 //     },
 //   }
-// }) satisfies GetServerSideProps
+// }) satisfies GetStaticProps
+
+/**
+ * Server Side Rendering
+ * In case we want to re-render data on every request
+ */
+export const getServerSideProps = (async (context) => {
+  const id = context?.params?.id as string
+
+  const { data } = await client.query({
+    context: { endpointIntent: 'build' },
+    query: SINGLE_POLICY_ASSET_QUERY,
+    variables: {
+      id,
+    },
+  })
+
+  const policyAsset = data?.policy_assets?.results[0]
+
+  return {
+    props: {
+      ...policyAsset,
+    },
+  }
+}) satisfies GetServerSideProps

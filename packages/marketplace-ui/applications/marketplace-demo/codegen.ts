@@ -2,9 +2,7 @@ import { CodegenConfig } from '@graphql-codegen/cli'
 import * as dotenv from 'dotenv'
 dotenv.config({ path: '.env' })
 
-const GRAPHQL_SCHEMA = process.env.NEXT_PUBLIC_GRAPHQL_SCHEMA as string
-
-console.log(GRAPHQL_SCHEMA)
+const GRAPHQL_SCHEMA = process.env.NEXT_PUBLIC_GRAPHQL_BUILD_ENDPOINT as string
 
 const typescriptConfig = {
   namingConvention: {

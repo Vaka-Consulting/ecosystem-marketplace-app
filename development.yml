@@ -67,6 +67,10 @@ services:
       dockerfile: docker/ui.Dockerfile
     ports:
       - "3000:3000"
+    command:
+      - "bash"
+      - "-c"
+      - "yarn dev"
     volumes:
       - ./packages/marketplace-ui/applications/marketplace-demo/src:/app/applications/marketplace-demo/src
       - ./packages/marketplace-ui/applications/marketplace-demo/public:/app/applications/marketplace-demo/public:ro

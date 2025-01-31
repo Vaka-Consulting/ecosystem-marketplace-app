@@ -35,7 +35,6 @@ function BuyForm({ defaultValues, submitting, disabled, handleSubmit }: BuyFormP
         type="submit"
         disabled={disabled}
         loading={submitting}
-        loadingIndicator="Buying..."
       >
         Buy
       </LoadingButton>

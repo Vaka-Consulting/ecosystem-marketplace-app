@@ -27,14 +27,12 @@
   },
   "scripts": {
     "dev": "yarn workspace marketplace-demo dev",
-    "prepare": "husky install",
     "pre-commit": "yarn lint-staged",
     "lint": "eslint --fix",
     "clean": "npx rimraf --glob ./**/node_modules"
   },
   "dependencies": {},
   "devDependencies": {
-    "husky": "^8.0.0",
     "lerna": "^8.1.8",
     "lint-staged": "^13.0.1",
     "prettier": "^3.3.3",

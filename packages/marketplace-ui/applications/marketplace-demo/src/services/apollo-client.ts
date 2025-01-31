@@ -1,30 +1,22 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
-import { API_ENDPOINT, FALLBACK_ENDPOINT } from '@/constants'
-import { onError } from '@apollo/client/link/error'
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from '@apollo/client'
+import { API_ENDPOINT, BUILD_ENDPOINT } from '@/constants'
 
 const cache = new InMemoryCache()
+
 const link = new HttpLink({
   uri: API_ENDPOINT,
 })
 
-const errorLink = onError(({ networkError, operation, forward }) => {
-  if (networkError) {
-    // Log the error or perform any action needed
-    console.error('Network error:', networkError)
-
-    // Modify the operation to use the fallback endpoint
-    console.log('Changing Endpoint with fallback')
-    operation.setContext({
-      uri: FALLBACK_ENDPOINT || API_ENDPOINT,
-    })
-
-    // Retry the request with the modified operation
-    return forward(operation)
-  }
+const linkBuild = new HttpLink({
+  uri: BUILD_ENDPOINT,
 })
 
 const client = new ApolloClient({
-  link: errorLink.concat(link),
+  link: ApolloLink.split(
+    (operation) => operation.getContext().endpointIntent === 'build',
+    linkBuild, //if above
+    link,
+  ),
   cache,
 })
 
