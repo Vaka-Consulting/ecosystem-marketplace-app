@@ -13,8 +13,6 @@ export const calcFeeAmount = (price: number, feePercentage: number): number => {
   const priceInLovelace = calcToLovelace(price)
   const feePriceInLovelace = priceInLovelace * feeMultiplier
 
-  console.log(price, feePercentage, priceInLovelace, feeMultiplier)
-
   return calcFromLovelace(feePriceInLovelace)
 }
 

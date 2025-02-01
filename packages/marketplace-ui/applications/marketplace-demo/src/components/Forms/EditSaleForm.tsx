@@ -81,7 +81,7 @@ function UpdateSaleForm({
     register,
     handleSubmit: submitHandler,
     watch,
-    formState,
+    // formState,
   } = useForm({
     resolver: yupResolver(updateSchema),
     defaultValues: {
@@ -93,7 +93,6 @@ function UpdateSaleForm({
   const { price } = defaultValues
 
   const onSubmit = (data: FieldValues): void => {
-    console.log(data)
     handleSubmit(data as FormSubmitData)
   }
 
@@ -101,14 +100,10 @@ function UpdateSaleForm({
     const value = event.currentTarget.value
     const cleanValue = value.replace(/[^1-9]/g, '')
 
-    console.log(value, cleanValue)
-
     if (cleanValue) {
       return cleanValue
     }
   }, [])
-
-  console.log(formState, watch('price'))
 
   return (
     <form onSubmit={submitHandler(onSubmit)}>
@@ -122,13 +117,17 @@ function UpdateSaleForm({
             placeholder="Enter the new price"
             disabled={disabled}
             defaultValue={price}
-            {...register('price')}
-            onChange={handleChange}
+            {...register('price', {
+              valueAsNumber: true,
+              onChange: handleChange,
+              minLength: 1,
+              maxLength: 1000000,
+            })}
           />
           <input type="hidden" value={OperationType.Update} {...register('type')} />
         </FormControl>
       </Box>
-      {watch('price') > 0 && <PriceCalculator price={price} feePercentage={feePercentage} />}
+      {watch('price') > 0 && <PriceCalculator price={watch('price')} feePercentage={feePercentage} />}
       <Box>
         <ButtonGroup variant="contained" aria-label="outlined primary button group">
           <LoadingButton

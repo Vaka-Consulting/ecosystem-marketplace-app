@@ -11,7 +11,7 @@ import { Layout } from '@/components'
 
 const PolicyAssets = dynamic(() => import('@/components/PolicyAssets'), {
   loading: () => <p>Loading...</p>,
-  ssr: false, // Disable SSR for this component if it relies on browser APIs
+  ssr: false, // Disable SSR for this component because it relies on browser APIs
 })
 
 interface Collection {
@@ -71,26 +71,30 @@ export default CollectionPage
 
 /** ************************************************************* */
 
-export async function getStaticPaths() {
-  const paths = collectionData.collections.map((collection) => ({
-    params: { id: collection.policyId },
-  }))
-
-  return { paths, fallback: false }
-}
-
-export async function getStaticProps({ params }: GetStaticPropsContext) {
-  const data = collectionData.collections.find((collection) => collection.policyId === params!.id)
-
-  return { props: { data } }
-}
+/**
+ * Static Site Generation
+ * In case we want to build pages and serve them as static files
+ */
+// export async function getStaticPaths() {
+//   const paths = collectionData.collections.map((collection) => ({
+//     params: { id: collection.policyId },
+//   }))
+//
+//   return { paths, fallback: false }
+// }
+//
+// export async function getStaticProps({ params }: GetStaticPropsContext) {
+//   const data = collectionData.collections.find((collection) => collection.policyId === params!.id)
+//
+//   return { props: { data } }
+// }
 
 /**
  * Server Side Rendering
  * In case we want to re-render data on every request
  */
-// export async function getServerSideProps({ params }: GetStaticPropsContext) {
-//   const data = collectionData.collections.find((collection) => collection.policyId === params!.id)
-//
-//   return { props: { data } }
-// }
+export async function getServerSideProps({ params }: GetStaticPropsContext) {
+  const data = collectionData.collections.find((collection) => collection.policyId === params!.id)
+
+  return { props: { data } }
+}

@@ -74,8 +74,6 @@ export function useMarketplaceTx() {
       try {
         if (!contract) throw new Error('Contract is not available')
 
-        console.log(type, asset, price)
-
         setTxId(undefined)
         setTxSignError(undefined)
         setTxSigning(true)

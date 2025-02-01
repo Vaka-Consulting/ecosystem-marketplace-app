@@ -51,7 +51,7 @@ function SellForm({ feePercentage, defaultValues, submitting, disabled, onSubmit
           <InputLabel htmlFor="outlined-adornment-amount">Price</InputLabel>
           <OutlinedInput
             id="outlined-adornment-amount"
-            type="text"
+            type="number"
             label="Price"
             min={0.1}
             placeholder="Enter the price"
