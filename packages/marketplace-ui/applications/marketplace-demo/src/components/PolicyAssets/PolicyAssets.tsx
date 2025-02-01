@@ -52,7 +52,7 @@ function Item({ onchain_metadata, extend }: PolicyAsset) {
 function Filter({ onChange }: { onChange: (event: SyntheticEvent) => void }) {
   return (
     <>
-      <FormControlLabel control={<Checkbox onChange={onChange} />} label="Owned by me" />
+      <FormControlLabel control={<Checkbox onChange={onChange} />} label="Owned by me" name="wallet" />
     </>
   )
 }
