@@ -1,8 +1,8 @@
-# Empowa Marketplace GraphQL API
+# Marketplace GraphQL API
 
 ## Description
 
-The Empowa Marketplace GraphQL API is designed to serve as the backend infrastructure for the Empowa marketplace platform. This API enables clients to interact with the marketplace through a flexible and efficient GraphQL interface, allowing for powerful data querying and manipulation.
+The Marketplace GraphQL API is designed to serve as the backend infrastructure for the marketplace platform. This API enables clients to interact with the marketplace through a flexible and efficient GraphQL interface, allowing for powerful data querying and manipulation.
 
 Built using Apollo GraphQL, this API takes advantage of the benefits of GraphQL, such as fetching only the required data and enabling a single endpoint for all interactions. The application utilizes TypeScript to provide strong typing, enhancing code quality and maintainability.
 

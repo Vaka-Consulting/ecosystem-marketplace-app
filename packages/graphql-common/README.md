@@ -1,8 +1,8 @@
-# Empowa GraphQL Common Package
+# GraphQL Common Package
 
 ## Overview
 
-The Empowa GraphQL Common package is a shared library based on the Apollo GraphQL server. It provides a set of common functionalities and utilities for building GraphQL APIs within the Empowa ecosystem, promoting code reusability and standardization.
+The GraphQL Common package is a shared library based on the Apollo GraphQL server. It provides a set of common functionalities and utilities for building GraphQL APIs within the ecosystem, promoting code reusability and standardization.
 
 ## Features
 
@@ -29,7 +29,7 @@ npm install @empowa/graphql-common
 
 ## Usage
 
-Here's a basic example of how to use the Empowa Graphql Common package:
+Here's a basic example of how to use the Graphql Common package:
 
 ```javascript
 const { createServer } = require('@empowa/graphql-common');

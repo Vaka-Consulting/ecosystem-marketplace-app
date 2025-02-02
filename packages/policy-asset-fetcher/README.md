@@ -1,4 +1,4 @@
-# Empowa Marketplace - Policy Asset Fetcher
+# Policy Asset Fetcher
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-brightgreen)
 

@@ -2,7 +2,7 @@
   "name": "empowa-marketplace",
   "version": "1.0.0",
   "private": true,
-  "description": "Empowa Marketplace contains packages to help build applications that can interact with a Marketplace Smart Contract.",
+  "description": "Marketplace contains packages to help build applications that can interact with a Marketplace Smart Contract.",
   "author": {
     "name": "Senny Kalidien",
     "email": "senny@sennify.com"
