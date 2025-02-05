@@ -1,5 +1,5 @@
 import { ApolloError } from '@apollo/client'
-import { MarketplaceConfig, OperationType } from '@empowa-tech/common'
+import { MarketplaceConfig, OperationType } from '@vakaconsulting/common-ui'
 import { FormSubmitData } from '@/components/Forms/types'
 
 export enum MarketplaceContext {

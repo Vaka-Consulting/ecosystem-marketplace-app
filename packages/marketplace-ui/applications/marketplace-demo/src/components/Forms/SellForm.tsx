@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
 import { Box, FormControl, InputLabel, OutlinedInput } from '@mui/material'
 import { AccountBalanceWallet as AccountBalanceWalletIcon } from '@mui/icons-material'
-import { OperationType } from '@empowa-tech/common'
+import { OperationType } from '@vakaconsulting/common-ui'
 import { PriceCalculator } from '@/components/'
 import { FormDefaultValues, FormSubmitData } from './types'
 

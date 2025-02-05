@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import { useCallback, useEffect, useState } from 'react'
-import { calcFromLovelace, calcToLovelace } from '@empowa-tech/common'
+import { calcFromLovelace, calcToLovelace } from '@vakaconsulting/common-ui'
 
 const calculateFeeAmount = (price: number, feePercentage: number) => {
   const priceInLovelace = calcToLovelace(price)

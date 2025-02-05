@@ -1,5 +1,5 @@
 {
-  "name": "@empowa-tech/marketplace-graphql-api",
+  "name": "@vakaconsulting/marketplace-graphql-api",
   "version": "0.0.6",
   "description": "",
   "scripts": {
@@ -34,7 +34,7 @@
     "@aws-sdk/client-sqs": "^3.582.0",
     "@aws-sdk/client-ssm": "^3.582.0",
     "@blockfrost/blockfrost-js": "^5.5.0",
-    "@empowa-tech/graphql-common": "^0.0.2",
+    "@vakaconsulting/graphql-commons": "1.0.0",
     "@graphql-tools/graphql-file-loader": "^8.0.0",
     "@graphql-tools/load": "^8.0.0",
     "@graphql-tools/schema": "^10.0.3",

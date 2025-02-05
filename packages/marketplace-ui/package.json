@@ -1,5 +1,5 @@
 {
-  "name": "empowa-marketplace",
+  "name": "@vakaconsulting/marketplace-ui",
   "version": "1.0.0",
   "private": true,
   "description": "Marketplace contains packages to help build applications that can interact with a Marketplace Smart Contract.",

@@ -4,7 +4,7 @@
  * as well as inserting new activities.
  */
 
-import { services } from '@empowa-tech/graphql-common';
+import { services } from '@vakaconsulting/graphql-commons';
 import { GraphQLError } from 'graphql';
 import { ObjectId } from 'mongodb';
 

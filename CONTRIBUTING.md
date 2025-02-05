@@ -11,7 +11,7 @@ We welcome and appreciate contributions from the community! Whether you're fixin
 
 2. **Clone Your Fork**  
    ```bash
-   git clone https://github.com/empowa-io/ecosystem-marketplace-app
+   git clone https://github.com/Vaka-Consulting/ecosystem-marketplace-app
    cd ecosystem-marketplace-app
    ```
 

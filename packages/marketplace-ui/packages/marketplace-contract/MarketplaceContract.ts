@@ -18,7 +18,7 @@ import {
   MarketplaceConfig,
   calcFromLovelace,
   LOVELACE_AMOUNT,
-} from '@empowa-tech/common'
+} from '@vakaconsulting/common-ui'
 import { constructDatumData } from './MarketplaceContract.utils'
 
 class MarketplaceContract implements MarketplaceContractModel {

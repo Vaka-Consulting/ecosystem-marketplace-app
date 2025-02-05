@@ -55,7 +55,7 @@ Follow these steps to set up the **Ecosystem Marketplace App** locally:
 
 1. **Clone the Repository** 📂  
    ```bash
-   git clone https://github.com/empowa-io/ecosystem-marketplace-app
+   git clone https://github.com/Vaka-Consulting/ecosystem-marketplace-app
    ```
 
 2. **Navigate to the Project Directory** 📁  
@@ -92,7 +92,7 @@ Before deploying the Ecosystem Marketplace App, you **must first deploy the smar
 ### **Steps to Deploy the Smart Contract**  
 1. **Clone the Smart Contract Repository**:  
    ```bash  
-   git clone https://github.com/empowa-io/ecosystem-marketplace  
+   git clone https://github.com/empowa-io/ecosystem-marketplace
    cd ecosystem-marketplace  
    ```  
 

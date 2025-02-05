@@ -3,7 +3,7 @@
  * It interacts with the database to retrieve configuration settings for the marketplace.
  */
 
-import { services } from "@empowa-tech/graphql-common";
+import { services } from "@vakaconsulting/graphql-commons";
 
 /**
  * The `marketplace_config` function is an asynchronous resolver that fetches the marketplace 

@@ -1,5 +1,5 @@
 {
-  "name": "@empowa-tech/marketplace-contract",
+  "name": "@vakaconsulting/marketplace-contract-ui",
   "version": "1.0.0",
   "description": "SDK to interact with the Plu-TS Marketplace Contract",
   "author": "Senny Kalidien <senny@vaka.consulting>",
@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "@meshsdk/core": "^1.7.6",
-    "@empowa-tech/common": "^1.0.0"
+    "@vakaconsulting/common-ui": "^1.0.0"
   }
 }

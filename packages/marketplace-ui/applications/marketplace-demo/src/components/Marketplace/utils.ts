@@ -2,7 +2,7 @@ import { Data, MarketplaceContext, MarketplaceStatus } from '@/components/Market
 import { Asset } from '@meshsdk/core'
 import { defaultPolicyAssetExtend, defaultPolicyAssetLastActivity } from '@/components/Marketplace/constants'
 import { PolicyAssetActivityQuery } from '@/gql/graphql'
-import { OperationType } from '@empowa-tech/common'
+import { OperationType } from '@vakaconsulting/common-ui'
 
 /**
  * Get Context Type

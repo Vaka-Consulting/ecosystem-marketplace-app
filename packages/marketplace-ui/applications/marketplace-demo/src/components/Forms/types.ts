@@ -1,4 +1,4 @@
-import { OperationType } from '@empowa-tech/common'
+import { OperationType } from '@vakaconsulting/common-ui'
 
 export interface FormDefaultValues {
   price: number

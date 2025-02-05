@@ -9,7 +9,7 @@
  */
 
 import { EntityManager, MikroORM } from "@mikro-orm/core";
-import { services } from "@empowa-tech/graphql-common";
+import { services } from "@vakaconsulting/graphql-commons";
 
 /**
  * The `DependencyInjection` interface defines the contract for 

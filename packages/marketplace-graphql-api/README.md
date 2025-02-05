@@ -61,7 +61,7 @@ sls deploy
 1. Clone the repository:
 
 ```
-git clone @empowa-tech/marketplace-graphql-api
+git clone @vakaconsulting/marketplace-graphql-api
 ```
 
 2. Navigate to the project directory:
@@ -108,5 +108,5 @@ yarn test
 
 ## Contact
 
-Email: contact@empowa.io
+Email: info@vaka.consulting
 Discord:

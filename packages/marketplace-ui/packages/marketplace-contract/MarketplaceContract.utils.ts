@@ -1,5 +1,5 @@
 import { resolvePaymentKeyHash, resolveStakeKeyHash, pubKeyAddress } from '@meshsdk/core'
-import { calcToLovelace } from '@empowa-tech/common'
+import { calcToLovelace } from '@vakaconsulting/common-ui'
 
 export const constructDatumData = (
   price: number,

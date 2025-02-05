@@ -1,7 +1,7 @@
 
 /* This is the base Graphql Server with all specs and configuration */
 
-import { scalars } from "@empowa-tech/graphql-common";
+import { scalars } from "@vakaconsulting/graphql-commons";
 import { ApolloServer } from "@apollo/server";
 import * as dotenv from "dotenv";
 import { GraphQLObjectId } from "graphql-objectid-scalar";
@@ -13,7 +13,7 @@ import {
 import {
   queries as AppConfigQueries
 } from './resolvers/app_config.js'
-import { common } from "@empowa-tech/graphql-common"; 
+import { common } from "@vakaconsulting/graphql-commons"; 
 import { policyAssetsTypeDefs } from "./gql/policy_assets.gql.js";
 import { appConfigDefs } from "./gql/app_config.gql.js";
 import { makeExecutableSchema } from "@graphql-tools/schema";
