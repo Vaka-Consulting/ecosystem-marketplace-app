@@ -1,4 +1,5 @@
 # 🌿 Ecosystem Marketplace App
+[![Build](https://github.com/Vaka-Consulting/ecosystem-marketplace-app/actions/workflows/npm-ci.yml/badge.svg)](https://github.com/Vaka-Consulting/ecosystem-marketplace-app/actions/workflows/npm-ci.yml)
 
 ## 📝 Description  
 The **Ecosystem Marketplace App** is a platform designed to connect NFT buyers and sellers within the **Cardano network** 🌐. It provides a seamless experience for users to trade NFTs efficiently and securely.  
