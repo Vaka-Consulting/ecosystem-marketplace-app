@@ -6,7 +6,7 @@ export default function MyDocument(props: DocumentProps & DocumentHeadTagsProps)
   return (
     <Html lang="en">
       <Head>
-        <meta name="description" content="A Marketplace Demo powered by Empowa"/>
+        <meta name="description" content="A Marketplace Demo powered by Cardano"/>
       </Head>
       <DocumentHeadTags {...props} />
       <body>
