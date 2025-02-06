@@ -92,12 +92,12 @@ Before deploying the Ecosystem Marketplace App, you **must first deploy the smar
 ### **Steps to Deploy the Smart Contract**  
 1. **Clone the Smart Contract Repository**:  
    ```bash  
-   git clone https://github.com/empowa-io/ecosystem-marketplace
+   git clone Vaka-Consulting/ecosystem-marketplace-contract
    cd ecosystem-marketplace  
    ```  
 
 2. **Build and Deploy the Contract**:  
-   - Follow the deployment instructions in the [ecosystem-marketplace repository](https://github.com/empowa-io/ecosystem-marketplace) to compile and deploy the contract.  
+   - Follow the deployment instructions in the [ecosystem-marketplace repository](https://github.com/Vaka-Consulting/ecosystem-marketplace-contract) to compile and deploy the contract.  
 
 3. **Retrieve Contract Configuration**:  
    - After deployment, **note these values** from the deployment logs:  
