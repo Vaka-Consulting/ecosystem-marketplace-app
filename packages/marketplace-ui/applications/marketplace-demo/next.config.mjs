@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.empowa.app',
+        hostname: new URL(process.env.NEXT_PUBLIC_IPFS_GATEWAY_URL).hostname,
         port: '',
         pathname: '/ipfs/**',
       },
