@@ -18,6 +18,8 @@ export const appConfigDefs = gql`
     script_address: String!
     fee_oracle_address: String!
     fee_oracle_asset: String!
+    fee_percentage: Float!
+    token_asset: String!
   }
 
   type Query {

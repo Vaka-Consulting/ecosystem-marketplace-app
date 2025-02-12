@@ -8,8 +8,8 @@ export const MARKETPLACE_CONFIG_QUERY = graphql(/* GraphQL */ `
       script_address
       fee_oracle_address
       fee_oracle_asset
-      # fee_percentage
-      # token_asset
+      fee_percentage
+      token_asset
     }
   }
 `) as DocumentNode

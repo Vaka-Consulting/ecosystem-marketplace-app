@@ -21,8 +21,6 @@ function useFetchMarketplaceConfig() {
   const network = walletNetwork === 1 ? 'mainnet' : 'preprod'
 
   const additionalConfig = {
-    fee_percentage: 2.5,
-    token_asset: 'lovelace',
     network,
   }
 

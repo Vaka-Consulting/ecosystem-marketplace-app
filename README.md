@@ -50,6 +50,51 @@ docker compose -f development.yml down
 ---
 
 
+
+
+## 🔗 Smart Contract Deployment  
+
+Before deploying the Ecosystem Marketplace App, you **must first deploy the smart contract** to the Cardano network. The contract logic and deployment scripts are hosted in a separate repository:  
+
+### **Steps to Deploy the Smart Contract**  
+
+1. **Build and Deploy the Contract**:  
+   - Follow the deployment instructions in the [ecosystem-marketplace-contracts repository](https://github.com/Vaka-Consulting/ecosystem-marketplace-contracts.git) to compile and deploy the contract. 
+
+2. **Retrieve Contract Configuration**:  
+   - After deployment, **note these values** from the deployment logs:  
+     - `protocol_owner_address`  (Owner address who deployed this marketplace)
+     - `script_address`  (This is the marketplace address)  
+     - `fee_oracle_address` (This is the oracle address of marketplace)  
+     - `fee_oracle_asset`  (Can be extracted feeOracleAddress by checking its only one asset and it does not have asset name just the policy id)
+     - `fee_percentage`  (Can be extracted feeOracleAddress by checking its only one asset and it does not have asset name just the policy id)
+
+4. **Update MongoDB Configuration**:  
+   Modify `init-mongo.js` with your contract's values:  
+   ```javascript
+   db.app_config.insertMany([
+     {
+       "name": "marketplace-config",
+       "protocol_owner_address": "<YOUR_PROTOCOL_OWNER_ADDRESS>", // From deployment output (`owner_address` in marketplace.config.json)
+       "script_address": "<YOUR_DEPLOYED_SCRIPT_ADDRESS>", // From deployment output (`marketplaceAddress`)
+       "fee_oracle_address": "<YOUR_FEE_ORACLE_ADDRESS>", // From deployment output (`feeOracleAddress`)
+       "fee_oracle_asset": "<YOUR_FEE_ORACLE_ASSET_ID>", // From deployment output (policy ID of the only asset in feeOracleAddress)
+       "token_asset": "lovelace", // Or for custom currency "<policy_id><token_hash>" from marketplace.config.json
+       "fee_percentage": 2.5, // `feeNumerator` from marketplace.config.json, divided by 10000 (e.g., 250000 becomes 2.5)
+     }
+   ]);
+   ```
+
+❗ **Critical**:  
+- Values must match your actual contract deployment output  
+- Recreate MongoDB containers after updating `init-mongo.js`
+
+---
+
+This places the MongoDB configuration instructions immediately after contract deployment steps, ensuring logical flow. The warning box emphasizes the importance of matching values between systems.
+
+---  
+
 ## 🚀 Installation  
 
 Follow these steps to set up the **Ecosystem Marketplace App** locally:  
@@ -85,51 +130,6 @@ Follow these steps to set up the **Ecosystem Marketplace App** locally:
    ```
 
 ---
-
-## 🔗 Smart Contract Deployment  
-
-Before deploying the Ecosystem Marketplace App, you **must first deploy the smart contract** to the Cardano network. The contract logic and deployment scripts are hosted in a separate repository:  
-
-### **Steps to Deploy the Smart Contract**  
-1. **Clone the Smart Contract Repository**:  
-   ```bash  
-   git clone Vaka-Consulting/ecosystem-marketplace-contracts
-   cd ecosystem-marketplace  
-   ```  
-
-2. **Build and Deploy the Contract**:  
-   - Follow the deployment instructions in the [ecosystem-marketplace-contract repository](https://github.com/Vaka-Consulting/ecosystem-marketplace-contracts) to compile and deploy the contract.  
-
-3. **Retrieve Contract Configuration**:  
-   - After deployment, **note these values** from the deployment logs:  
-     - `protocol_owner_address`  
-     - `script_address`  
-     - `fee_oracle_address`  
-     - `fee_oracle_asset`  
-
-4. **Update MongoDB Configuration**:  
-   Modify `init-mongo.js` with your contract's values:  
-   ```javascript  
-   db.app_config.insertMany([
-     {
-       "name": "marketplace-config",
-       "protocol_owner_address": "<YOUR_PROTOCOL_OWNER_ADDRESS>",
-       "script_address": "<YOUR_DEPLOYED_SCRIPT_ADDRESS>",
-       "fee_oracle_address": "<YOUR_FEE_ORACLE_ADDRESS>",
-       "fee_oracle_asset": "<YOUR_FEE_ORACLE_ASSET_ID>"
-     }
-   ]);
-   ```  
-
-❗ **Critical**:  
-- Values must match your actual contract deployment output  
-- Recreate MongoDB containers after updating `init-mongo.js`
-
----
-
-This places the MongoDB configuration instructions immediately after contract deployment steps, ensuring logical flow. The warning box emphasizes the importance of matching values between systems.
-
----  
 
 ## 🤝 Contributing  
 We welcome contributions! If you'd like to contribute to the project, please follow the guidelines in the [CONTRIBUTING.md](CONTRIBUTING.md) file.  

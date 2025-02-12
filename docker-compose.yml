@@ -6,7 +6,7 @@ services:
       MONGO_INITDB_DATABASE: marketplace_db  # Name of your default database
     volumes:
       - ./data/mongodb:/data/db  # MongoDB data persistence
-      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro  # Initialization script
+      - ./assets/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro  # Initialization script
     ports:
       - "27017:27017"  # Expose MongoDB to localhost
     healthcheck:

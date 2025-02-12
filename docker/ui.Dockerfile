@@ -6,6 +6,10 @@ WORKDIR /app
 
 COPY packages/marketplace-ui .
 
+COPY assets/public/ ./applications/marketplace-demo/public
+
+COPY assets/collections.json ./applications/marketplace-demo/src/data/collections.json
+
 # RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn install
 
 RUN yarn install
