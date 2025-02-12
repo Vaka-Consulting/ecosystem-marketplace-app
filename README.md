@@ -87,11 +87,11 @@ Before deploying the Ecosystem Marketplace App, you **must first deploy the smar
 
 ❗ **Critical**:  
 - Values must match your actual contract deployment output  
-- Recreate MongoDB containers after updating `init-mongo.js`
+- Recreate MongoDB containers after updating `init-mongo.js` using `rm -rf ./data`
 
 ---
 
-This places the MongoDB configuration instructions immediately after contract deployment steps, ensuring logical flow. The warning box emphasizes the importance of matching values between systems.
+This places the MongoDB configuration instructions immediately after contract deployment steps, ensuring logical flow.
 
 ---  
 
@@ -113,6 +113,7 @@ Follow these steps to set up the **Ecosystem Marketplace App** locally:
    ```bash
    cp sample.env .env
    ```
+   Check `.env` file for more details on configuring env values.
 
 4. **Build Docker Containers** 🏗️  
    ```bash
