@@ -3,4 +3,3 @@ data/**
 .env
 **/node_modules/
 .idea
-assets/**

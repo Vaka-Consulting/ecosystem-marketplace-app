@@ -1,0 +1,10 @@
+{
+  "collections": [
+    {
+      "name": "Happy Feet",
+      "description": "Happy Feet NFT Marketplace",
+      "image": "/collection.webp",
+      "policyId": "2cbcdc3a9a766a1bd475dda1068d3eae85e090795d318b4387563c59"
+    }
+  ]
+}
