@@ -123,7 +123,7 @@ Follow these steps to set up the **Ecosystem Marketplace App** locally:
    ```bash
    docker compose up -d
    ```
-   Once it is up you can start and check from your browser. [https://localhost:3000](https://localhost:3000)
+   Once it is up you can start and check from your browser. [http://localhost:3000](http://localhost:3000)
 
 
 7. **Stop Docker Containers** ⬇️
