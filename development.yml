@@ -6,7 +6,7 @@ services:
       MONGO_INITDB_DATABASE: marketplace_db  # Name of your default database
     volumes:
       - ./data/mongodb:/data/db  # MongoDB data persistence
-      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro  # Initialization script
+      - ./assets/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro  # Initialization script
     ports:
       - "27017:27017"  # Expose MongoDB to localhost
     healthcheck:
@@ -14,7 +14,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
+      
   api:
     image: api
     depends_on: 
@@ -62,15 +62,15 @@ services:
     depends_on: 
       api:
         condition: service_healthy
+    command:
+      - "bash"
+      - "-c"
+      - "yarn dev"
     build:
       context: .
       dockerfile: docker/ui.Dockerfile
     ports:
       - "3000:3000"
-    command:
-      - "bash"
-      - "-c"
-      - "yarn dev"
     volumes:
       - ./packages/marketplace-ui/applications/marketplace-demo/src:/app/applications/marketplace-demo/src
       - ./packages/marketplace-ui/applications/marketplace-demo/public:/app/applications/marketplace-demo/public:ro
