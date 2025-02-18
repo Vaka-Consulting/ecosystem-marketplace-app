@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query MarketplaceConfig {\n    marketplace_config {\n      protocol_owner_address\n      script_address\n      fee_oracle_address\n      fee_oracle_asset\n      # fee_percentage\n      # token_asset\n    }\n  }\n": types.MarketplaceConfigDocument,
+    "\n  query MarketplaceConfig {\n    marketplace_config {\n      protocol_owner_address\n      script_address\n      fee_oracle_address\n      fee_oracle_asset\n      fee_percentage\n      token_asset\n    }\n  }\n": types.MarketplaceConfigDocument,
     "\n  fragment PolicyAssetPart on PolicyAsset {\n    _id\n    asset\n    asset_name\n    policy_id\n    fingerprint\n    onchain_metadata {\n      name\n      image\n      description\n      files {\n        src\n      }\n    }\n    extend {\n      price\n    }\n  }\n": types.PolicyAssetPartFragmentDoc,
     "\n  query SinglePolicyAsset($id: String) {\n    policy_assets(limit: 1, and: [{ key: \"asset\", value: $id, operator: EQUALS }]) {\n      results {\n        ...PolicyAssetPart\n      }\n    }\n  }\n": types.SinglePolicyAssetDocument,
     "\n  query PolicyAssetActivity($and: [WhereInput]) {\n    policy_assets(and: $and, limit: 1) {\n      results {\n        _id\n        asset\n        extend {\n          price\n          is_sale\n          seller_address\n        }\n        last_activity {\n          status\n          type\n          price\n          receiver_address\n        }\n      }\n    }\n  }\n": types.PolicyAssetActivityDocument,
@@ -39,7 +39,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query MarketplaceConfig {\n    marketplace_config {\n      protocol_owner_address\n      script_address\n      fee_oracle_address\n      fee_oracle_asset\n      # fee_percentage\n      # token_asset\n    }\n  }\n"): (typeof documents)["\n  query MarketplaceConfig {\n    marketplace_config {\n      protocol_owner_address\n      script_address\n      fee_oracle_address\n      fee_oracle_asset\n      # fee_percentage\n      # token_asset\n    }\n  }\n"];
+export function graphql(source: "\n  query MarketplaceConfig {\n    marketplace_config {\n      protocol_owner_address\n      script_address\n      fee_oracle_address\n      fee_oracle_asset\n      fee_percentage\n      token_asset\n    }\n  }\n"): (typeof documents)["\n  query MarketplaceConfig {\n    marketplace_config {\n      protocol_owner_address\n      script_address\n      fee_oracle_address\n      fee_oracle_asset\n      fee_percentage\n      token_asset\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
