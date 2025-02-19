@@ -33,6 +33,8 @@ function useFetchMarketplaceConfig() {
         ...additionalConfig,
       }
     }
+
+    return undefined
   }, [data, network])
 }
 

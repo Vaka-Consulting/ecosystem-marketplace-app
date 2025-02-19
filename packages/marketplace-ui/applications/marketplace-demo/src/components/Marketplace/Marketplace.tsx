@@ -12,16 +12,16 @@ interface MarketplaceProps {
 }
 
 function Marketplace({ asset }: MarketplaceProps) {
-  const { data, loading, error, submitting, txSigning, txSignError, handleSubmit } = useMarketplace({ asset })
+  const { data, loading, error, config, submitting, txSigning, txSignError, handleSubmit } = useMarketplace({ asset })
 
   if (loading) return <>Getting Marketplace information...</>
   if (error) return <>Error getting Marketplace information</>
-  if (data) {
+  if (data && config) {
     return (
       <>
         {data.context === MarketplaceContext.Seller ? (
           <EditSaleForm
-            feePercentage={0.2}
+            feePercentage={config.feePercentage}
             defaultValues={{
               price: data.price,
               type: OperationType.Update,
@@ -41,7 +41,7 @@ function Marketplace({ asset }: MarketplaceProps) {
         ) : data.context === MarketplaceContext.Owner ? (
           <>
             <SellForm
-              feePercentage={0.2}
+              feePercentage={config.feePercentage}
               defaultValues={{ price: data.price, type: OperationType.Sell }}
               submitting={submitting}
               disabled={submitting}
