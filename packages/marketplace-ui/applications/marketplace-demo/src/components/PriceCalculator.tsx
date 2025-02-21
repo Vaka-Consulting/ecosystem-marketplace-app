@@ -6,14 +6,14 @@ import { calcFromLovelace, calcToLovelace } from '@vakaconsulting/common-ui'
 
 const calculateFeeAmount = (price: number, feePercentage: number) => {
   const priceInLovelace = calcToLovelace(price)
-  const feePriceInLovelace = priceInLovelace * feePercentage
+  const feePriceInLovelace = priceInLovelace * feePercentage * 0.01
 
   return calcFromLovelace(feePriceInLovelace)
 }
 
 const calculateSellerAmount = (price: number, feePercentage: number) => {
   const priceLovelace = calcToLovelace(price)
-  const feePriceLovelace = priceLovelace * feePercentage
+  const feePriceLovelace = priceLovelace * feePercentage * 0.01
   return calcFromLovelace(priceLovelace - feePriceLovelace)
 }
 
@@ -30,8 +30,8 @@ function PriceCalculator({ price, feePercentage }: { price: number; feePercentag
       setFeePrice(0)
       setEarningPrice(0)
     } else {
-      const calculatedEarningPrice = price - price * feePercentage
-      const calculatedFeePrice = price * feePercentage
+      const calculatedEarningPrice = price - price * feePercentage * 0.01
+      const calculatedFeePrice = price * feePercentage * 0.01
 
       setFeePrice(calculatedFeePrice)
       setEarningPrice(calculatedEarningPrice)
